@@ -20,6 +20,11 @@ export class NavbarComponent implements OnInit {
              readonly _securityService: SecuriteService) {
   }
   ngOnInit() {
+    let isConnected = false;
+    const token = localStorage.getItem("token");
+    const isAdmin = token === 'ADMIN';
+    const isJoueur = token === 'JOUEUR';
+    if(token ==='ADMIN' || token ==='JOUEUR'){isConnected = true}
     this.items = [
       {
         label: 'Tournoi',
@@ -28,10 +33,12 @@ export class NavbarComponent implements OnInit {
           {
             label: 'Créer',
             icon: 'pi pi-fw pi-plus',
+            visible: isAdmin
           },
           {
             label: 'Supprimer',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            visible: isAdmin
           },
           {
             separator: true
@@ -46,22 +53,26 @@ export class NavbarComponent implements OnInit {
           },
           {
             label: 'Inscrire',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            visible: isConnected
           },
           {
             label: 'Désinscrire',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            visible: isConnected
           },
           {
             separator: true
           },
           {
             label: 'Démarrer',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            visible: isAdmin
           },
           {
             label: 'Passer au tour suivant',
-            icon: 'pi pi-fw pi-trash'
+            icon: 'pi pi-fw pi-trash',
+            visible: isAdmin
           },
         ]
       },
@@ -75,11 +86,13 @@ export class NavbarComponent implements OnInit {
           },
           {
             label: 'modifier',
-            icon: 'pi pi-fw pi-align-right'
+            icon: 'pi pi-fw pi-align-right',
+            visible: isAdmin
           },
           {
             label: 'Supprimer',
-            icon: 'pi pi-fw pi-align-center'
+            icon: 'pi pi-fw pi-align-center',
+            visible: isAdmin
           }
         ]
       },
@@ -89,15 +102,8 @@ export class NavbarComponent implements OnInit {
         items: [
           {
             label: 'Créer',
-            icon: 'pi pi-fw pi-user-plus'
-          },
-          {
-            label: 'Effacer',
-            icon: 'pi pi-fw pi-user-minus'
-          },
-          {
-            label: 'Modifier',
-            icon: 'pi pi-fw pi-users',
+            icon: 'pi pi-fw pi-user-plus',
+            visible: isAdmin
           }
         ]
       },
