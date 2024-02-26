@@ -26,7 +26,7 @@ export class SecuriteService {
         localStorage.setItem(this.TOKEN_KEY, data.token);
         localStorage.setItem(this.ROLE_KEY, data.role.toString());
         localStorage.setItem(this.LOGIN_KEY, data.username);
-        this.userConnected.next(data.username);
+        this.userConnected.next(data.role.toString());
       })
     )
   }
