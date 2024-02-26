@@ -21,6 +21,7 @@ import {BadgeModule} from "primeng/badge";
 import {MenuModule} from "primeng/menu";
 import {SlideMenuModule} from "primeng/slidemenu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     NavbarComponent,
     Page404Component,
     LoginComponent,
+    HomeComponent,
   ],
     imports: [
         BrowserModule,
@@ -50,7 +52,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         BrowserAnimationsModule
     ],
   providers: [
-    { provide : "localhost", useValue : "http://localhost:8080/"},
+    { provide : "localhost", useValue : "http://localhost:8080/api/"},
     { provide: HTTP_INTERCEPTORS, useClass: authIntercpetorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

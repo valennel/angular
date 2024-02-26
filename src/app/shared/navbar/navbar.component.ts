@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {MenuItem} from "primeng/api";
 import {Router} from "@angular/router";
+import {SecuriteService} from "../../services/securite.service";
 
 
 
@@ -12,7 +13,11 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
   items!: MenuItem[];
-  constructor(readonly _router: Router) {
+  role!:string;
+
+
+  constructor(readonly _router: Router,
+             readonly _securityService: SecuriteService) {
   }
   ngOnInit() {
     this.items = [
@@ -102,15 +107,20 @@ export class NavbarComponent implements OnInit {
       },
       {
         label: 'Se connecter',
-        icon: 'pi pi-fw pi-power-off'
+        icon: 'pi pi-fw pi-power-off',
+        command: (event) => { this.redirige('/login'); }
       },
       {
-        label: 'Sortir',
-        icon: 'pi pi-fw pi-power-off'
+        label: 'Se déconnecter',
+        icon: 'pi pi-fw pi-power-off',
+        command: (event) => { this.logout(); }
       }
     ];
   }
   redirige(link:string){
     this._router.navigate([link]);
+  }
+  logout(){
+    this._securityService.logout()
   }
 }

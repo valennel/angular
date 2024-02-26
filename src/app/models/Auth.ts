@@ -1,38 +1,24 @@
 export interface AuthDTO{
-  login:string,
+  username:string,
   token:string,
-  roles:Role[]
+  role:Roles
 }
 
-export interface LoginForm{
-  login:string,
-  password:string
+export interface LoginForm {
+  identifiant: string,
+  motDePasse: string
 }
 
-export interface Address{
-  id:number,
-  numero:string,
-  rue:string,
-  codePostal:string,
-  ville:string
-}
 
-export interface Course {
-  mnemonique:string,
-  intitule:string,
-  resume:string,
-  professeurTitulaire:string
-}
-
-export interface Professor{
-  id:number,
-  numeroMatricule:string,
-  titre:string,
-  nom:string,
-  prenom:string
-}
-enum Role {
+enum Roles {
   ADMIN,
-  STUDENT,
-  PROFESSOR
+  JOUEUR
+}
+enum Genre{GARCON, FILLE, AUTRE}
+export interface joueurForm{
+  pseudo:	string,
+  email:	string,
+  dateDeNaissance: Date,
+  genre:Genre,
+  role:Roles
 }

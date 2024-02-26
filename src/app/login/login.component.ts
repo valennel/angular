@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SecuriteService} from "../services/securite.service";
 import {Router} from "@angular/router";
 
-;
 
 @Component({
   selector: 'app-login',
@@ -19,8 +18,8 @@ export class LoginComponent {
               private readonly _router: Router) {
     //this._securiteService.logout()
     this.loginForm = this._formBuilder.group({
-      login: this._formBuilder.control('',Validators.required),
-      password: this._formBuilder.control('',Validators.required),
+      identifiant: this._formBuilder.control('',Validators.required),
+      motDePasse: this._formBuilder.control('',Validators.required),
 
     });
   }
@@ -42,6 +41,6 @@ export class LoginComponent {
     this._securiteService.logout()
   }
 
-    protected readonly onsubmit = onsubmit;
+  protected readonly onsubmit = onsubmit;
   protected readonly localStorage = localStorage;
 }
