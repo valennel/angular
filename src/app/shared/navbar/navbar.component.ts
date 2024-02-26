@@ -21,10 +21,11 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit() {
     let isConnected = false;
-    const token = localStorage.getItem("token");
-    const isAdmin = token === 'ADMIN';
-    const isJoueur = token === 'JOUEUR';
-    if(token ==='ADMIN' || token ==='JOUEUR'){isConnected = true}
+    const role = localStorage.getItem("role");
+    const isAdmin = role === 'ADMIN';
+    const isJoueur = role === 'JOUEUR';
+    if(role ==='ADMIN' || role ==='JOUEUR'){isConnected = true}
+    console.log(role)
     this.items = [
       {
         label: 'Tournoi',
@@ -99,6 +100,7 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Utilisateur',
         icon: 'pi pi-fw pi-user',
+        visible: isAdmin,
         items: [
           {
             label: 'Créer',
