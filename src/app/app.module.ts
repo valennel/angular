@@ -3,16 +3,56 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {authIntercpetorInterceptor} from "./interceptors/auth-intercpetor.interceptor";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {DockModule} from "primeng/dock";
+import {RadioButtonModule} from "primeng/radiobutton";
+import {PasswordModule} from "primeng/password";
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
+import {FooterComponent} from "./shared/footer/footer.component";
+import {HeaderComponent} from "./shared/header/header.component";
+import {NavbarComponent} from "./shared/navbar/navbar.component";
+import {Page404Component} from "./shared/page404/page404.component";
+import {LoginComponent} from "./login/login.component";
+import {PanelMenuModule} from "primeng/panelmenu";
+import {BadgeModule} from "primeng/badge";
+import {MenuModule} from "primeng/menu";
+import {SlideMenuModule} from "primeng/slidemenu";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
-    AppComponent
+
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    NavbarComponent,
+    Page404Component,
+    LoginComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DockModule,
+        RadioButtonModule,
+        PasswordModule,
+        ButtonModule,
+        TableModule,
+        PanelMenuModule,
+        BadgeModule,
+        MenuModule,
+        SlideMenuModule,
+        BrowserAnimationsModule
+    ],
+  providers: [
+    { provide : "localhost", useValue : "http://localhost:8080/"},
+    { provide: HTTP_INTERCEPTORS, useClass: authIntercpetorInterceptor, multi: true },
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

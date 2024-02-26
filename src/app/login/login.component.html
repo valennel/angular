@@ -1,0 +1,24 @@
+<div>
+
+  <h2>Connexion</h2>
+
+</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <div class="card flex justify-content-center gap-3">
+            <label htmlFor="username">Username </label>
+            <input pInputText type="text" class="p-inputtext-lg" placeholder="Large" formControlName="login"/>
+            <label htmlFor="password">Password </label>
+            <p-password formControlName="password" [toggleMask]="true"></p-password>
+            <p-button styleClass="p-button-outlined" type="submit">
+                <img alt="logo" src="https://primefaces.org/cdn/primeng/images/primeng-icon.svg" style="width: 1.5rem" />
+                <span class="ml-2 font-bold">Login</span>
+            </p-button>
+            <p-button styleClass="p-button-outlined" (onClick)="logout()">
+                <img alt="logo" src="https://primefaces.org/cdn/primeng/images/primeng-icon.svg" style="width: 1.5rem" />
+                <span class="ml-2 font-bold">Logout</span>
+            </p-button>
+        </div>
+
+</form>
