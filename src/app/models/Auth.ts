@@ -23,8 +23,24 @@ export interface Tournoi{
   womenOnly: boolean,
   dateFinInscriptions: Date,
   rondeCourante: number,
+  recontresActuelles: RecontresActuelles[]
 }
 
+export interface RecontresActuelles {
+  id: number
+  tournoiId: number,
+  pseudoJoueurBlanc: string,
+  pseudoJoueurNoir: string,
+  ronde: number,
+  resultat:Resultat
+}
+
+enum Resultat{
+  PAS_ENCORE_JOUEE,
+  NOIR,
+  BLANC,
+  EGALITE
+}
 export interface JoueursInscrits{
   pseudo:string,
   email:string,
@@ -33,17 +49,24 @@ export interface JoueursInscrits{
   genre: Genre
 }
 enum Categories{
-  JUNIOR, SENIOR, VETERAN
+  JUNIOR,
+  SENIOR,
+  VETERAN
 }
 
 enum Statut{
-  EN_ATTENTE_DE_JOUEURS, EN_COURS, TERMINE
+  EN_ATTENTE_DE_JOUEURS,
+  EN_COURS,
+  TERMINE
 }
 enum Roles {
   ADMIN,
   JOUEUR
 }
-enum Genre{GARCON, FILLE, AUTRE}
+enum Genre{
+  GARCON,
+  FILLE,
+  AUTRE}
 export interface joueurForm{
   pseudo:	string,
   email:	string,

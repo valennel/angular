@@ -26,6 +26,7 @@ import { TournoiComponent } from './tournoi/tournoi.component';
 import {ToastModule} from "primeng/toast";
 import {ToolbarModule} from "primeng/toolbar";
 import {FileUploadModule} from "primeng/fileupload";
+import { TournoiGetoneComponent } from './tournoi/tournoi-getone/tournoi-getone.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {FileUploadModule} from "primeng/fileupload";
     LoginComponent,
     HomeComponent,
     TournoiComponent,
+    TournoiGetoneComponent,
 
   ],
   imports: [

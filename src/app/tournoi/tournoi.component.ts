@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TournoiService} from "../services/tournoi.service";
 import {Observable, Subject, takeUntil} from "rxjs";
 import {Tournoi} from "../models/Auth";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-tournoi',
@@ -15,7 +16,9 @@ export class TournoiComponent implements OnInit{
 
   editTournoi(id:number){}
 
-  openDetail(id:number){}
+  openDetail(id:number){
+    this.redirige('/tournoi-getone');
+  }
 
   selectedTournoi: Tournoi | undefined;
 
@@ -30,7 +33,8 @@ export class TournoiComponent implements OnInit{
 
   course!: Observable<string>;
 
-  constructor(private readonly _tournoiService:TournoiService) {
+  constructor(private readonly _tournoiService:TournoiService,
+              private readonly _router: Router) {
   }
 
   ngOnInit() {
@@ -73,6 +77,9 @@ export class TournoiComponent implements OnInit{
     return this.tournois ? this.first === 0 : true;
   }
 
+  redirige(link:string){
+    this._router.navigate([link]);
+  }
 
 }
 

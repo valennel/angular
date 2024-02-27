@@ -15,5 +15,8 @@ export class TournoiService {
     return this._httpClient.get<Tournoi[]>(this._apiUrl + "tournoi/top10")
   }
 
+  getOne(id:number){
+    return this._httpClient.get<Tournoi>(this._apiUrl + "tournoi/" + id )
+  }
 
-}
+  }

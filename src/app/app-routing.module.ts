@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'home', component:HomeComponent},
   {path:'404', component:Page404Component},
-  {path:'tournoi', component:TournoiComponent},
+  {path:'tournoi', loadChildren: () => import('./tournoi/tournoi.module').then(m => m.TournoiModule)},
   {path:'**', redirectTo:'404'},
 
 ];
