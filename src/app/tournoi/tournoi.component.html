@@ -1,0 +1,67 @@
+<div class="card">
+  <p-table
+    [value]="tournois"
+    [paginator]="true"
+    [rows]="5"
+    [rowHover]="true"
+    [(selection)]="selectedTournoi"
+    dataKey="id"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]">
+    <ng-template pTemplate="header">
+      <tr>
+       <!-- <th style="width:5%"></th> -->
+        <th style="width:5%">nom</th>
+        <th style="width:5%">lieu</th>
+        <th style="width:5%">nombre d'inscriptions</th>
+        <th style="width:5%">nombre minimum de joueur</th>
+        <th style="width:5%">nombre maximum de joueur</th>
+        <th style="width:5%">eLO min</th>
+        <th style="width:5%">eLO max</th>
+        <th style="width:5%">catégorie</th>
+        <th style="width:5%">statut</th>
+        <th style="width:5%">Women Only</th>
+        <th style="width:5%">date fin d'inscription</th>
+        <th style="width:5%">ronde courante</th>
+        <th style="width:5%"></th>
+        <th style="width:5%"></th>
+        <th style="width:5%"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tournoi>
+      <tr>
+      <!--  <td>
+          <p-tableCheckbox [value]="tournoi"></p-tableCheckbox>
+        </td> -->
+        <td>{{ tournoi.nom }}</td>
+        <td>{{ tournoi.lieu }}</td>
+        <td>{{ tournoi.nombreJoueursInscrits }}</td>
+        <td>{{ tournoi.nombreMinJoueurs }}</td>
+        <td>{{tournoi.nombreMaxJoueurs}}</td>
+        <td>{{tournoi.eLOMin}}</td>
+        <td>{{tournoi.eLOMax}}</td>
+        <td>{{tournoi.categories}}</td>
+        <td>{{tournoi.statut}}</td>
+        <td>{{tournoi.womenOnly}}</td>
+        <td>{{tournoi.dateFinInscriptions}}</td>
+        <td>{{tournoi.rondeCourante}}</td>
+        <td><p-button severity="info" icon="pi pi-info-circle" class="p-button-rounded "(click)="openDetail(tournoi.id)"></p-button></td>
+        <td><p-button severity="help" icon="pi pi-file-edit" class="p-button-rounded" (click)="editTournoi(tournoi.id)"></p-button></td>
+        <td><p-button severity="danger" icon="pi pi-trash" class="p-button-rounded " (click)="deleteTournoi(tournoi.id)"></p-button></td>
+
+      </tr>
+
+
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+
+    </ng-template>
+  </p-table>
+</div>
+
