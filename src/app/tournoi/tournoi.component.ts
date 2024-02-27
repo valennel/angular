@@ -11,13 +11,20 @@ import {Router} from "@angular/router";
 })
 export class TournoiComponent implements OnInit{
   tournois!: Tournoi[];
+ ceTournoi!: Tournoi[];
 
   deleteTournoi(id: number){}
 
   editTournoi(id:number){}
 
   openDetail(id:number){
-    this.redirige('/tournoi-getone');
+    this._tournoiService.getOne(id).pipe(takeUntil(this.$destroyed)).subscribe({
+      next:(valeur) => this.ceTournoi=valeur,
+      error:(err)=>console.log(err.error()),
+      complete:()=>console.log("Chargement terminé")
+    })
+
+    this.redirige('/tournoi/tournoi-getone');
   }
 
   selectedTournoi: Tournoi | undefined;

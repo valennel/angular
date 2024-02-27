@@ -27,6 +27,7 @@ import {ToastModule} from "primeng/toast";
 import {ToolbarModule} from "primeng/toolbar";
 import {FileUploadModule} from "primeng/fileupload";
 import { TournoiGetoneComponent } from './tournoi/tournoi-getone/tournoi-getone.component';
+import {DropdownModule} from "primeng/dropdown";
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { TournoiGetoneComponent } from './tournoi/tournoi-getone/tournoi-getone.
     BrowserAnimationsModule,
     ToastModule,
     ToolbarModule,
-    FileUploadModule
+    FileUploadModule,
+    DropdownModule
   ],
   providers: [
     { provide : "localhost", useValue : "http://localhost:8080/api/"},
