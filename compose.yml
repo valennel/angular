@@ -23,9 +23,9 @@ services:
     container_name: echecs_api
     #build: ../TournoiEchecs
     # amd
-    image: 'ylorthpro/tournoi-echecs:latest'
+    #image: 'ylorthpro/tournoi-echecs:latest'
     # arm
-    # image: 'ylorthpro/tournoi-echecs-arm:latest'
+    image: 'ylorthpro/tournoi-echecs-arm:latest'
     ports:
       - '8080:8080'
     depends_on:

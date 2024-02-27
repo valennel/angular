@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Tournoi} from "../../models/Auth";
+import {MessageService, SelectItem} from "primeng/api";
 
 @Component({
   selector: 'app-tournoi-getone',
@@ -10,41 +11,30 @@ export class TournoiGetoneComponent implements OnInit{
 @Input() tournoi!:Tournoi[]
 
 
-  products!: Product[];
+  clonedTournoi: { [s: string]: Tournoi } = {};
 
-  statuses!: SelectItem[];
-
-  clonedProducts: { [s: string]: Product } = {};
-
-  constructor(private productService: ProductService, private messageService: MessageService) {}
+  constructor( private messageService: MessageService) {}
 
   ngOnInit() {
-    this.productService.getProductsMini().then((data) => {
-      this.products = data;
-    });
 
-    this.statuses = [
-      { label: 'In Stock', value: 'INSTOCK' },
-      { label: 'Low Stock', value: 'LOWSTOCK' },
-      { label: 'Out of Stock', value: 'OUTOFSTOCK' }
-    ];
+
   }
 
-  onRowEditInit(product: Product) {
-    this.clonedProducts[product.id as string] = { ...product };
+  onRowEditInit(tournoi: Tournoi) {
+    this.clonedTournoi[tournoi.id as number] = { ...tournoi };
   }
 
-  onRowEditSave(product: Product) {
-    if (product.price > 0) {
-      delete this.clonedProducts[product.id as string];
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product is updated' });
+  onRowEditSave(tournoi: Tournoi) {
+    if (tournoi.nom !== null) {
+      delete this.clonedTournoi[tournoi.id as number];
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'tournoi is updated' });
     } else {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Price' });
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'nom null' });
     }
   }
 
-  onRowEditCancel(product: Product, index: number) {
-    this.products[index] = this.clonedProducts[product.id as string];
-    delete this.clonedProducts[product.id as string];
+  onRowEditCancel(tournoi:Tournoi, index: number) {
+    this.tournoi[index] = this.clonedTournoi[tournoi.id as number];
+    delete this.clonedTournoi[tournoi.id as number];
   }
 }
