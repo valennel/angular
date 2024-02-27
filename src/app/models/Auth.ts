@@ -9,7 +9,36 @@ export interface LoginForm {
   motDePasse: string
 }
 
+export interface Tournoi{
+  id:number,
+  nom:	string,
+  lieu:	string,
+  nombreJoueursInscrits: number,
+  nombreMinJoueurs: number,
+  nombreMaxJoueurs: number,
+  eLOMin: number,
+  eLOMax: number,
+  categories: Categories
+  statut: Statut,
+  womenOnly: boolean,
+  dateFinInscriptions: Date,
+  rondeCourante: number,
+}
 
+export interface JoueursInscrits{
+  pseudo:string,
+  email:string,
+  dateDeNaissance : Date,
+  elO:number,
+  genre: Genre
+}
+enum Categories{
+  JUNIOR, SENIOR, VETERAN
+}
+
+enum Statut{
+  EN_ATTENTE_DE_JOUEURS, EN_COURS, TERMINE
+}
 enum Roles {
   ADMIN,
   JOUEUR

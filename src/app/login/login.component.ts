@@ -28,7 +28,7 @@ export class LoginComponent {
     this._securiteService.login(this.loginForm.value)
       .subscribe({
         next: (response) => {
-          this._router.navigate(['/home'])
+          this._router.navigate(['/tournoi'])
         },
         error: (err) => {
           if(err.error.status === 403)

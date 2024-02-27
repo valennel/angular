@@ -22,6 +22,11 @@ import {MenuModule} from "primeng/menu";
 import {SlideMenuModule} from "primeng/slidemenu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HomeComponent } from './home/home.component';
+import { TournoiComponent } from './tournoi/tournoi.component';
+import {ToastModule} from "primeng/toast";
+import {ToolbarModule} from "primeng/toolbar";
+import {FileUploadModule} from "primeng/fileupload";
+
 
 @NgModule({
   declarations: [
@@ -33,24 +38,29 @@ import { HomeComponent } from './home/home.component';
     Page404Component,
     LoginComponent,
     HomeComponent,
+    TournoiComponent,
+
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        DockModule,
-        RadioButtonModule,
-        PasswordModule,
-        ButtonModule,
-        TableModule,
-        PanelMenuModule,
-        BadgeModule,
-        MenuModule,
-        SlideMenuModule,
-        BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DockModule,
+    RadioButtonModule,
+    PasswordModule,
+    ButtonModule,
+    TableModule,
+    PanelMenuModule,
+    BadgeModule,
+    MenuModule,
+    SlideMenuModule,
+    BrowserAnimationsModule,
+    ToastModule,
+    ToolbarModule,
+    FileUploadModule
+  ],
   providers: [
     { provide : "localhost", useValue : "http://localhost:8080/api/"},
     { provide: HTTP_INTERCEPTORS, useClass: authIntercpetorInterceptor, multi: true },

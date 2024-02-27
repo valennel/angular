@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
            {
              label: 'Tournoi',
              icon: 'pi pi-fw pi-file',
+             command: (event) => { this.redirige('/tournoi'); },
              items: [
                {
                  label: 'Créer',
@@ -45,20 +46,20 @@ export class NavbarComponent implements OnInit {
                },
                {
                  label: 'Afficher',
-                 icon: 'pi pi-fw pi-trash'
+                 icon: 'pi pi-fw pi-align-left'
                },
                {
                  label: 'Rechercher',
-                 icon: 'pi pi-fw pi-trash'
+                 icon: 'pi pi-fw pi-search'
                },
                {
                  label: 'Inscrire',
-                 icon: 'pi pi-fw pi-trash',
+                 icon: 'pi pi-fw pi-users',
                  visible: this.role !== null
                },
                {
                  label: 'Désinscrire',
-                 icon: 'pi pi-fw pi-trash',
+                 icon: 'pi pi-fw pi-user-minus',
                  visible: this.role !== null
                },
                {
@@ -66,12 +67,12 @@ export class NavbarComponent implements OnInit {
                },
                {
                  label: 'Démarrer',
-                 icon: 'pi pi-fw pi-trash',
+                 icon: 'pi pi-fw pi-thumbs-up-fill',
                  visible: this.role === "ADMIN"
                },
                {
                  label: 'Passer au tour suivant',
-                 icon: 'pi pi-fw pi-trash',
+                 icon: 'pi pi-fw pi-chevron-circle-right',
                  visible: this.role === "ADMIN"
                },
              ]
@@ -86,12 +87,12 @@ export class NavbarComponent implements OnInit {
                },
                {
                  label: 'modifier',
-                 icon: 'pi pi-fw pi-align-right',
+                 icon: 'pi pi-fw pi-file-edit',
                  visible: this.role === "ADMIN"
                },
                {
                  label: 'Supprimer',
-                 icon: 'pi pi-fw pi-align-center',
+                 icon: 'pi pi-fw pi-trash',
                  visible: this.role === "ADMIN"
                }
              ]
@@ -103,7 +104,7 @@ export class NavbarComponent implements OnInit {
              items: [
                {
                  label: 'Créer',
-                 icon: 'pi pi-fw pi-user-plus',
+                 icon: 'pi pi-user-plus',
                  visible: this.role === "ADMIN"
                }
              ]
@@ -114,7 +115,7 @@ export class NavbarComponent implements OnInit {
            },
            {
              label: 'Se connecter',
-             icon: 'pi pi-fw pi-power-off',
+             icon: 'pi pi-fw pi-apple',
              command: (event) => { this.redirige('/login'); }
            },
            {
