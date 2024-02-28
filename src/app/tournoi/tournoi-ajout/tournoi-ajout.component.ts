@@ -12,6 +12,8 @@ export class TournoiAjoutComponent implements OnInit{
 @Input() tournoi!: Tournoi;
 
 tournoiForm! : FormGroup;
+
+onSubmit(){}
   constructor(private fb: FormBuilder) { }
 
 

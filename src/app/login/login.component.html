@@ -10,7 +10,7 @@
             <label htmlFor="username">Username </label>
             <input pInputText type="text" class="p-inputtext-lg" placeholder="Large" formControlName="identifiant"/>
             <label htmlFor="password">Password </label>
-            <p-password formControlName="motDePasse" [toggleMask]="true"></p-password>
+            <p-password formControlName="motDePasse" [feedback]="false" [toggleMask]="true"></p-password>
 
             <p-button styleClass="p-button-outlined" type="submit">
                  <img alt="logo" src="/assets/king.png" style="width: 1.5rem" />
