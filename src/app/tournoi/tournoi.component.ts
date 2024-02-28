@@ -11,20 +11,28 @@ import {Router} from "@angular/router";
 })
 export class TournoiComponent implements OnInit{
   tournois!: Tournoi[];
- ceTournoi!: Tournoi[];
+  ceTournoi: Tournoi[]= [];
 
-  deleteTournoi(id: number){}
+  deleteTournoi(id: number){
+  this._tournoiService.deleteOne(id).subscribe(
+    ()=> this.ngOnInit()
+  );
+  }
 
+  addTournoi(){
+    this._tournoiService.addTournoi(this.tournois[0]).subscribe(
+      ()=> this.ngOnInit()
+    )
+  }
   editTournoi(id:number){}
 
   openDetail(id:number){
     this._tournoiService.getOne(id).pipe(takeUntil(this.$destroyed)).subscribe({
-      next:(valeur) => this.ceTournoi=valeur,
+      next:(valeur) => this.ceTournoi.push(valeur),
       error:(err)=>console.log(err.error()),
       complete:()=>console.log("Chargement terminé")
     })
 
-    this.redirige('/tournoi/tournoi-getone');
   }
 
   selectedTournoi: Tournoi | undefined;

@@ -5,13 +5,12 @@ import {MessageService, SelectItem} from "primeng/api";
 @Component({
   selector: 'app-tournoi-getone',
   templateUrl: './tournoi-getone.component.html',
-  styleUrl: './tournoi-getone.component.css'
+  styleUrl: './tournoi-getone.component.css',
+  providers:[MessageService]
 })
 export class TournoiGetoneComponent implements OnInit{
-@Input() tournoi!:Tournoi[]
+@Input() tournoiTab!:Tournoi[]
 
-
-  clonedTournoi: { [s: string]: Tournoi } = {};
 
   constructor( private messageService: MessageService) {}
 
@@ -21,20 +20,20 @@ export class TournoiGetoneComponent implements OnInit{
   }
 
   onRowEditInit(tournoi: Tournoi) {
-    this.clonedTournoi[tournoi.id as number] = { ...tournoi };
+    this.tournoiTab[tournoi.id as number] = { ...tournoi };
   }
 
   onRowEditSave(tournoi: Tournoi) {
     if (tournoi.nom !== null) {
-      delete this.clonedTournoi[tournoi.id as number];
+      delete this.tournoiTab[tournoi.id as number];
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'tournoi is updated' });
     } else {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'nom null' });
     }
   }
 
-  onRowEditCancel(tournoi:Tournoi, index: number) {
-    this.tournoi[index] = this.clonedTournoi[tournoi.id as number];
-    delete this.clonedTournoi[tournoi.id as number];
+  onRowEditCancel(tournoi:Tournoi) {
+    this.tournoiTab[0]= this.tournoiTab[tournoi.id as number];
+    delete this.tournoiTab[tournoi.id as number];
   }
 }

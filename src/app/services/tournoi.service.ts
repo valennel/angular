@@ -16,7 +16,14 @@ export class TournoiService {
   }
 
   getOne(id:number){
-    return this._httpClient.get<Tournoi[]>(this._apiUrl + "tournoi/" + id )
+    return this._httpClient.get<Tournoi>(this._apiUrl + "tournoi/" + id )
   }
 
+  deleteOne(id:number){
+    return this._httpClient.delete<Tournoi>(this._apiUrl + "tournoi/" + id)
+  }
+
+  addTournoi(tournoi: Tournoi){
+    return this._httpClient.post<Tournoi>(this._apiUrl + "tournoi/creation", tournoi)
+  }
   }
