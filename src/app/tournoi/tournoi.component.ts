@@ -3,6 +3,7 @@ import {TournoiService} from "../services/tournoi.service";
 import {Observable, Subject, takeUntil} from "rxjs";
 import {Tournoi} from "../models/Auth";
 import {Router} from "@angular/router";
+import {SecuriteService} from "../services/securite.service";
 
 @Component({
   selector: 'app-tournoi',
@@ -12,7 +13,13 @@ import {Router} from "@angular/router";
 export class TournoiComponent implements OnInit{
   tournois!: Tournoi[];
   ceTournoi: Tournoi[]= [];
+  role!: string | null;
 
+  showTournoiDetail = false;
+
+  toggleTournoiAjout() {
+    this.showTournoiDetail = !this.showTournoiDetail;
+  }
   deleteTournoi(id: number){
   this._tournoiService.deleteOne(id).subscribe(
     ()=> this.ngOnInit()
@@ -20,6 +27,7 @@ export class TournoiComponent implements OnInit{
   }
 
   addTournoi(){
+
     this._tournoiService.addTournoi(this.tournois[0]).subscribe(
       ()=> this.ngOnInit()
     )
@@ -27,6 +35,7 @@ export class TournoiComponent implements OnInit{
   editTournoi(id:number){}
 
   openDetail(id:number){
+    this.showTournoiDetail = true
     this._tournoiService.getOne(id).pipe(takeUntil(this.$destroyed)).subscribe({
       next:(valeur) => this.ceTournoi.push(valeur),
       error:(err)=>console.log(err.error()),
@@ -49,10 +58,15 @@ export class TournoiComponent implements OnInit{
   course!: Observable<string>;
 
   constructor(private readonly _tournoiService:TournoiService,
-              private readonly _router: Router) {
+              private readonly _router: Router,
+              private readonly _securityService: SecuriteService) {
   }
 
   ngOnInit() {
+
+    this._securityService.userConnected.subscribe(
+      value => {
+        this.role = value;})
 
     this._tournoiService.getTop10().pipe(
       takeUntil(this.$destroyed)
