@@ -16,7 +16,7 @@ export class LoginComponent {
   constructor(private readonly _securiteService: SecuriteService,
               private readonly _formBuilder: FormBuilder,
               private readonly _router: Router) {
-    //this._securiteService.logout()
+
     this.loginForm = this._formBuilder.group({
       identifiant: this._formBuilder.control('',Validators.required),
       motDePasse: this._formBuilder.control('',Validators.required),
@@ -25,6 +25,9 @@ export class LoginComponent {
   }
 
   login(){
+    if(localStorage.getItem('token')){
+      this.logout()
+    }
     this._securiteService.login(this.loginForm.value)
       .subscribe({
         next: (response) => {
@@ -41,6 +44,4 @@ export class LoginComponent {
     this._securiteService.logout()
   }
 
-  protected readonly onsubmit = onsubmit;
-  protected readonly localStorage = localStorage;
 }

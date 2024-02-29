@@ -1,6 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Tournoi} from "../models/Auth";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,9 @@ export class TournoiService {
   deleteOne(id:number){
     return this._httpClient.delete<Tournoi>(this._apiUrl + "tournoi/" + id)
   }
-
+  updateTournoi(tournoi:Tournoi){
+    return new BehaviorSubject<Tournoi>(tournoi)
+}
   addTournoi(tournoi: Tournoi){
     return this._httpClient.post<Tournoi>(this._apiUrl + "tournoi/creation", tournoi)
   }

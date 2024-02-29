@@ -63,15 +63,10 @@
   </p-table>
 </div>
 <p></p>
-<div>
-  <app-tournoi-getone *ngIf="ceTournoi" [tournoiTab]="ceTournoi"></app-tournoi-getone>
+<div *ngIf="ceTournoi">
+  <app-tournoi-getone  [tournoiTab]="ceTournoi"></app-tournoi-getone>
 </div>
 <p></p>
-<div>
-  <app-tournoi-ajout *ngIf="role ==='ADMIN'"></app-tournoi-ajout>
-</div>
-<div>
 
-</div>
 
 

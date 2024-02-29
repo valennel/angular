@@ -13,6 +13,7 @@ import {SecuriteService} from "../services/securite.service";
 export class TournoiComponent implements OnInit{
   tournois!: Tournoi[];
   ceTournoi: Tournoi[]= [];
+  tournoiDetail? : Tournoi;
   role!: string | null;
 
   showTournoiDetail = false;
@@ -37,7 +38,17 @@ export class TournoiComponent implements OnInit{
   openDetail(id:number){
     this.showTournoiDetail = true
     this._tournoiService.getOne(id).pipe(takeUntil(this.$destroyed)).subscribe({
-      next:(valeur) => this.ceTournoi.push(valeur),
+      next:(valeur) => {this.ceTournoi = []; this.ceTournoi.push(valeur)},
+      error:(err)=>console.log(err.error()),
+      complete:()=>console.log("Chargement terminé")
+    })
+
+  }
+
+  detail(id:number){
+    this.showTournoiDetail = true
+    this._tournoiService.getOne(id).pipe(takeUntil(this.$destroyed)).subscribe({
+      next:(valeur) => this.tournoiDetail=valeur,
       error:(err)=>console.log(err.error()),
       complete:()=>console.log("Chargement terminé")
     })

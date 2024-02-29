@@ -28,9 +28,11 @@ import {ToolbarModule} from "primeng/toolbar";
 import {FileUploadModule} from "primeng/fileupload";
 import { TournoiGetoneComponent } from './tournoi/tournoi-getone/tournoi-getone.component';
 import {DropdownModule} from "primeng/dropdown";
-import { TournoiAjoutComponent } from './tournoi/tournoi-ajout/tournoi-ajout.component';
+
 import {InputGroupModule} from "primeng/inputgroup";
 import {InputGroupAddonModule} from "primeng/inputgroupaddon";
+import {InputTextModule} from "primeng/inputtext";
+
 
 
 @NgModule({
@@ -45,7 +47,6 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     HomeComponent,
     TournoiComponent,
     TournoiGetoneComponent,
-    TournoiAjoutComponent,
 
   ],
   imports: [
@@ -69,7 +70,8 @@ import {InputGroupAddonModule} from "primeng/inputgroupaddon";
     FileUploadModule,
     DropdownModule,
     InputGroupModule,
-    InputGroupAddonModule
+    InputGroupAddonModule,
+    InputTextModule
   ],
   providers: [
     { provide : "localhost", useValue : "http://localhost:8080/api/"},
