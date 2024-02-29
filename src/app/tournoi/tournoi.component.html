@@ -53,13 +53,13 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="paginatorleft">
-      <p-button icon="pi pi-plus" [rounded]="true" severity="success" (click)="ajoutTournoi()"></p-button>
+      <p-button *ngIf="role ==='ADMIN'" icon="pi pi-plus" [rounded]="true" severity="success" (click)="ajoutTournoi()"></p-button>
     </ng-template>
   </p-table>
 </div>
 
 <div>
-  <p-dialog [(visible)]="addTournoiDialog" [style]="{width: '450px'}" header="Ajout d'un torunoi" [modal]="true" styleClass="p-fluid">
+  <p-dialog [(visible)]="addTournoiDialog" [style]="{width: '450px'}" header="Ajout d'un tournoi" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
       <div class="p-field">
         <label for="name">Nom</label>
