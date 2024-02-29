@@ -8,7 +8,34 @@ export interface LoginForm {
   identifiant: string,
   motDePasse: string
 }
+export class TournoiForm{
+  nom:	string;
+  lieu:	string;
+  nombreJoueursInscrits: number;
+  nombreMinJoueurs: number;
+  nombreMaxJoueurs: number;
+  eLOMin: number;
+  eLOMax: number;
+  categories: Categories[];
+  statut: Statut;
+  womenOnly: boolean;
+  dateFinInscriptions: Date;
 
+  constructor() {
+    this.nom='';
+    this.lieu=	'';
+    this.nombreJoueursInscrits = 0;
+    this.nombreMinJoueurs=0;
+    this.nombreMaxJoueurs= 0;
+    this.eLOMin= 0;
+    this.eLOMax= 0;
+    this.categories= []
+    this.statut= Statut.EN_ATTENTE_DE_JOUEURS;
+    this.womenOnly= false;
+    this.dateFinInscriptions= new Date()
+  }
+
+}
 export interface Tournoi{
   id:number,
   nom:	string,
@@ -48,13 +75,13 @@ export interface JoueursInscrits{
   elO:number,
   genre: Genre
 }
-enum Categories{
+export enum Categories{
   JUNIOR,
   SENIOR,
   VETERAN
 }
 
-enum Statut{
+export enum Statut{
   EN_ATTENTE_DE_JOUEURS,
   EN_COURS,
   TERMINE

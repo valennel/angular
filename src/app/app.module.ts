@@ -33,6 +33,15 @@ import {InputGroupModule} from "primeng/inputgroup";
 import {InputGroupAddonModule} from "primeng/inputgroupaddon";
 import {InputTextModule} from "primeng/inputtext";
 
+import {InputNumberModule} from "primeng/inputnumber";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {DialogModule} from "primeng/dialog";
+import {CheckboxModule} from "primeng/checkbox";
+import {ConfirmationService} from "primeng/api";
+import {CalendarModule} from "primeng/calendar";
+import {SelectButtonModule} from "primeng/selectbutton";
+import {MultiSelectModule} from "primeng/multiselect";
+
 
 
 @NgModule({
@@ -47,6 +56,7 @@ import {InputTextModule} from "primeng/inputtext";
     HomeComponent,
     TournoiComponent,
     TournoiGetoneComponent,
+
 
   ],
   imports: [
@@ -71,7 +81,14 @@ import {InputTextModule} from "primeng/inputtext";
     DropdownModule,
     InputGroupModule,
     InputGroupAddonModule,
-    InputTextModule
+    InputTextModule,
+    InputNumberModule,
+    ConfirmDialogModule,
+    DialogModule,
+    CheckboxModule,
+    CalendarModule,
+    SelectButtonModule,
+    MultiSelectModule
   ],
   providers: [
     { provide : "localhost", useValue : "http://localhost:8080/api/"},

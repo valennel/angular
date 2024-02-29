@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Tournoi} from "../models/Auth";
+import {Tournoi, TournoiForm} from "../models/Auth";
 import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
@@ -26,7 +26,7 @@ export class TournoiService {
   updateTournoi(tournoi:Tournoi){
     return new BehaviorSubject<Tournoi>(tournoi)
 }
-  addTournoi(tournoi: Tournoi){
+  addTournoi(tournoi: TournoiForm){
     return this._httpClient.post<Tournoi>(this._apiUrl + "tournoi/creation", tournoi)
   }
   }

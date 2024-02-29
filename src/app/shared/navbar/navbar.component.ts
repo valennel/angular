@@ -114,12 +114,12 @@ export class NavbarComponent implements OnInit {
              separator: true
            },
            {
-             label: 'Se connecter',
+             label: 'Connecter',
              icon: 'pi pi-fw pi-apple',
              command: (event) => { this.redirige('/login'); }
            },
            {
-             label: 'Se déconnecter',
+             label: 'Déconnecter',
              icon: 'pi pi-fw pi-power-off',
              command: (event) => { this.logout(); }
            }

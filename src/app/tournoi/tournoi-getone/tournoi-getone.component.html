@@ -10,6 +10,14 @@
         <th style="width:20%">Lieu</th>
         <th style="width:20%">nombreJoueursInscrits</th>
         <th style="width:20%">nombreMinJoueurs</th>
+        <th style="width:20%">nombreMaxJoueurs</th>
+        <th style="width:20%">eLOMin</th>
+        <th style="width:20%">eLOMax</th>
+        <th style="width:20%">catégories</th>
+        <th style="width:20%">status</th>
+        <th style="width:20%">womenOnly</th>
+        <th style="width:20%">dateFinInscription</th>
+        <th style="width:20%">RondeCourante</th>
         <th style="width:20%"></th>
       </tr>
     </ng-template>
@@ -52,6 +60,86 @@
             </ng-template>
             <ng-template pTemplate="output">
               {{tournoi.nombreMinJoueurs}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.nombreMaxJoueurs">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.nombreMaxJoueurs}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.eLOMin">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.eLOMin}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.eLOMax">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.eLOMax}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.categories">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.categories}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.status">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.status}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.womenOnly">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.womenOnly}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.dateFinInscriptions">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.dateFinInscriptions}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="tournoi.rondeCourante">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{tournoi.rondeCourante}}
             </ng-template>
           </p-cellEditor>
         </td>

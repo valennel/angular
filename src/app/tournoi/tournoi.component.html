@@ -50,22 +50,88 @@
         <td><p-button severity="info" icon="pi pi-info-circle" class="p-button-rounded "(click)="openDetail(tournoi.id)"></p-button></td>
         <!--<td><p-button severity="help" icon="pi pi-file-edit" class="p-button-rounded" (click)="editTournoi(tournoi.id)"></p-button></td>--->
         <td><p-button *ngIf="role ==='ADMIN'" severity="danger" icon="pi pi-trash" class="p-button-rounded " (click)="deleteTournoi(tournoi.id)"></p-button></td>
-
       </tr>
-
-
     </ng-template>
     <ng-template pTemplate="paginatorleft">
-      <p-button icon="pi pi-plus" [rounded]="true" severity="success" (click)="addTournoi()"></p-button>
+      <p-button icon="pi pi-plus" [rounded]="true" severity="success" (click)="ajoutTournoi()"></p-button>
     </ng-template>
-
-
   </p-table>
 </div>
-<p></p>
-<div *ngIf="ceTournoi">
-  <app-tournoi-getone  [tournoiTab]="ceTournoi"></app-tournoi-getone>
+
+<div>
+  <p-dialog [(visible)]="addTournoiDialog" [style]="{width: '450px'}" header="Ajout d'un torunoi" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+      <div class="p-field">
+        <label for="name">Nom</label>
+        <input pInputText id="name" [(ngModel)]="nouveauTournoi.nom" required autofocus />
+        <small class="p-invalid" *ngIf="submitted && !nouveauTournoi.nom">Un nom est requis</small>
+      </div>
+      <div class="p-field">
+        <label for="lieu">Lieu</label>
+        <input pInputText id="lieu" [(ngModel)]="nouveauTournoi.lieu" required autofocus>
+        <small class="p-invalid" *ngIf="submitted && !nouveauTournoi.lieu">Un lieu est requis</small>
+      </div>
+      <div class="p-field">
+        <label for="ELoMin">Elo Min</label>
+        <p-inputNumber id="ELoMin" [(ngModel)]="nouveauTournoi.eLOMin"  aria-valuemax="3000"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="EloMax">Elo Max</label>
+        <p-inputNumber id="EloMax" [(ngModel)]="nouveauTournoi.eLOMax"  ></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="nbrJoueurMin">Nbr Min Joueurs</label>
+        <p-inputNumber id="nbrJoueurMin" [(ngModel)]="nouveauTournoi.nombreMinJoueurs"  aria-valuemax="3000"></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="nbrJoueuerMax">Nbr Max Joueurs</label>
+        <p-inputNumber id="nbrJoueuerMax" [(ngModel)]="nouveauTournoi.nombreMaxJoueurs"  ></p-inputNumber>
+      </div>
+      <div class="p-field">
+        <label for="dateFinInscription">Date fin d'inscrioption</label>
+        <p-calendar id="dateFinInscription" [(ngModel)]="nouveauTournoi.dateFinInscriptions" dateFormat="dd.mm.yy"></p-calendar>
+      </div>
+
+      <div class="p-field">
+        <label class="p-mb-3">Categorie</label>
+          <div class="card flex justify-content-center">
+            <p-multiSelect [options]="categorieOptions" [(ngModel)]="nouveauTournoi.categories" optionLabel="name" optionValue="value"></p-multiSelect>
+          </div>
+        </div>
+
+      <div class="p-field">
+        <label class="p-mb-3">Status</label>
+        <div class="card flex justify-content-center">
+          <p-dropdown [options]="statusOptions" [(ngModel)]="nouveauTournoi.statut" optionLabel="name" optionValue="value" [showClear]="true" placeholder="Select a City"></p-dropdown>
+        </div>
+      </div>
+
+      <div class="p-field">
+        <label class="p-mb-3">Women Only</label>
+        <div class="card flex justify-content-center">
+          <p-checkbox [(ngModel)]="nouveauTournoi.womenOnly" [binary]="true" inputId="binary"></p-checkbox>
+        </div>
+      </div>
+
+      <div>
+        <button pButton pRipple type="button" label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-text" (click)="saveTournoi()" ></button>
+      </div>
+    </ng-template>
+  </p-dialog>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+      <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple type="submit" label="Sauvegarder" icon="pi pi-check" class="p-button-text" (click)="saveTournoi()" ></button>
+      </ng-template>
+
 </div>
+
+
+<p></p>
+  <div *ngIf="ceTournoi">
+    <app-tournoi-getone  [tournoiTab]="ceTournoi"></app-tournoi-getone>
+  </div>
 <p></p>
 
 
