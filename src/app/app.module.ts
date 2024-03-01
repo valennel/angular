@@ -41,6 +41,7 @@ import {ConfirmationService} from "primeng/api";
 import {CalendarModule} from "primeng/calendar";
 import {SelectButtonModule} from "primeng/selectbutton";
 import {MultiSelectModule} from "primeng/multiselect";
+import {InputSwitchModule} from "primeng/inputswitch";
 
 
 
@@ -88,7 +89,8 @@ import {MultiSelectModule} from "primeng/multiselect";
     CheckboxModule,
     CalendarModule,
     SelectButtonModule,
-    MultiSelectModule
+    MultiSelectModule,
+    InputSwitchModule
   ],
   providers: [
     { provide : "localhost", useValue : "http://localhost:8080/api/"},
