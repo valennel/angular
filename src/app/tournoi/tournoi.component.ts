@@ -144,6 +144,8 @@ export class TournoiComponent implements OnInit{
     this._tournoiService.addTournoi(this.nouveauTournoi).subscribe(
       ()=> this.ngOnInit()
     )
+    this.addTournoiDialog = false;
+    this.submitted = false;
   }
 }
 
